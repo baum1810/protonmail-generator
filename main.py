@@ -5,12 +5,12 @@ import requests, random
 from time import sleep
 import undetected_chromedriver as uc
 from os import system
-#option = webdriver.ChromeOptions()
 option = uc.ChromeOptions()
-PROXY = "154.83.29.201:999"
+#PROXY = "154.83.29.201:999" #delete the # to enable proxies u also need to put a http proxie inside
+#option.add_argument('--proxy-server=%s' % PROXY) #delete the # to enable proxies 
 def cls():
     system("cls")
-#option.add_argument('--proxy-server=%s' % PROXY)
+
 option.add_argument('--disable-notifications')
 option.add_extension("Noptcha--ReCAPTCHA---hCAPTCHA-Solver.crx")
 option.add_extension("I-don-t-care-about-cookies.crx")
@@ -44,10 +44,11 @@ def main():
     elem = driver.find_element_by_xpath("//*")
     source_code = elem.get_attribute("outerHTML")
     if not "CAPTCHA" in source_code:
-        print("captcha not found")
-        system("start IPChanger.vbs")
-        sleep(10)
-        main()
+        cls()
+        print("captcha not found please complete verification")
+        input("press enter when done")
+
+ 
     print("Waiting 20 seconds please be paitent")
     sleep(20)
     driver.find_element(By.XPATH, value='/html/body/div[1]/div[3]/div/div/main/div[2]/form/button').click()
